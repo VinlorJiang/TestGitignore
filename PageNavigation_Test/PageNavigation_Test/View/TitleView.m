@@ -8,15 +8,17 @@
 
 #import "TitleView.h"
 
+#define kPadding 15.0
+
 @interface TitleView ()
 
+
 @property (nonatomic, strong) UIScrollView *scrollView;
-/** 底线 */
-@property (nonatomic, strong) UIView *bottomView;
+
 /** 滚动线 */
-@property (nonatomic) UIScrollView *scrollLine;
+@property (nonatomic, strong) UIImageView *lineIamgeView;
 
-
+@property (nonatomic, assign) CGFloat lineHieght;
 @end
 
 @implementation TitleView
@@ -25,54 +27,45 @@
     self = [super initWithFrame:frame];
     if (self) {
      //   self.backgroundColor = [UIColor purpleColor];
+        self.lineHieght = 2.0;
         [self createSubView];
     }
     return self;
 }
 - (void)createSubView {
     [self addSubview:self.scrollView];
-    [self addSubview:self.bottomView];
-    [self addSubview:self.scrollLine];
-    
     self.scrollView.frame = self.bounds;
     
-    CGFloat bottomViewX = 0;
-    CGFloat bottomViewY = CGRectGetMaxY(self.scrollView.frame) - 0.5;
-    CGFloat bottomViewW = self.bounds.size.width;
-    CGFloat bottomViewH = 0.5;
-
-    self.bottomView.frame = CGRectMake(bottomViewX, bottomViewY, bottomViewW, bottomViewH);
-   
-    CGFloat labelY = CGRectGetMinY(self.scrollView.frame);
-    CGFloat labelW = self.bounds.size.width / self.titleLabel.count;
-    CGFloat labelH = self.scrollView.frame.size.height-2;
+    [self.scrollView addSubview:self.lineIamgeView];
+ 
     NSMutableArray *mutArray;
+    NSInteger offSet = 0;
     for (int i = 0; i < self.titleLabel.count; i++) {
         UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.text = self.titleLabel[i];
-        titleLabel.tag = i;
-        titleLabel.font = [UIFont systemFontOfSize:16];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.tag = 111 +i;
+        titleLabel.font = [UIFont systemFontOfSize:15.0];
         titleLabel.textColor = [UIColor colorWithRed:85.0 green:85.1 blue:85.2 alpha:1];
         
-        titleLabel.frame = CGRectMake(labelW * i, labelY, labelW, labelH);
-        [self addSubview:titleLabel];
+        CGSize size = [self sizeWithWidth:[UIScreen mainScreen].bounds.size.width systemFontOfSize:15.0 content:self.titleLabel[i]];
+        float originX = i ? (kPadding *2 + offSet) : kPadding;
+        titleLabel.frame = CGRectMake(originX, 0, size.width, self.frame.size.height - self.lineHieght);
+        offSet = CGRectGetMaxX(titleLabel.frame);
+        titleLabel.textAlignment = NSTextAlignmentLeft;
+        [self.scrollView addSubview:titleLabel];
         [mutArray addObject:titleLabel];
     }
-    UILabel *firstLabel = mutArray[0];
-    CGFloat scrollLineX = CGRectGetMinX(firstLabel.frame);
-    CGFloat scrollLineY = labelH;
-    CGFloat scrollLineW = labelW;
-    CGFloat scrollLineH = 2;
-
-    self.scrollLine.frame = CGRectMake(scrollLineX, scrollLineY, scrollLineW, scrollLineH);
+    self.scrollView.contentSize = CGSizeMake(offSet+kPadding, self.frame.size.height);
 }
 #pragma mark - lazyload
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
-        _scrollView.backgroundColor = [UIColor orangeColor];
+        _scrollView.backgroundColor = [UIColor whiteColor];
         _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.alwaysBounceVertical = YES;
+        _scrollView.alwaysBounceHorizontal = NO;
         _scrollView.scrollsToTop = NO;
         _scrollView.bounces = NO;
     }
@@ -80,22 +73,24 @@
 }
 - (NSArray *)titleLabel {
     if (!_titleLabel) {
-        _titleLabel = @[@"新闻",@"热点",@"娱乐",@"教育"];
+        _titleLabel = @[@"香蕉",@"大苹果",@"小樱桃",@"橘子",@"pich",@"大鸭梨",@"第四点"];
     }
     return _titleLabel;
 }
-- (UIView *)bottomView {
-    if (!_bottomView) {
-        _bottomView = [[UIView alloc] init];
-        _bottomView.backgroundColor = [UIColor lightGrayColor];
-    }
-    return _bottomView;
+- (CGSize)sizeWithWidth:(CGFloat)width systemFontOfSize:(CGFloat)fontSize content:(NSString *)content {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 0)];
+    label.text = content;
+    label.font = [UIFont systemFontOfSize:fontSize];
+    label.numberOfLines = 0;
+    [label sizeToFit];
+    CGSize size = label.frame.size;
+    return size;
 }
-- (UIScrollView *)scrollLine {
-    if (!_scrollLine) {
-        _scrollLine = [[UIScrollView alloc] init];
-        _scrollLine.backgroundColor = [UIColor redColor];
+- (UIImageView *)lineIamgeView {
+    if (!_lineIamgeView) {
+        _lineIamgeView = [[UIImageView alloc] init];
+        _lineIamgeView.image = [UIImage imageNamed:@"nar_bgbg"];
     }
-    return _scrollLine;
+    return _lineIamgeView;
 }
 @end

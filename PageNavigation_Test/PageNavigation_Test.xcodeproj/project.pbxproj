@@ -20,6 +20,8 @@
 		186609071EDF10DA00CDAE74 /* WMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 186608FF1EDF10DA00CDAE74 /* WMScrollView.m */; };
 		186609081EDF10DA00CDAE74 /* WMPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186609021EDF10DA00CDAE74 /* WMPageController.m */; };
 		18FCD5751EE050D90093BC1A /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FCD5741EE050D90093BC1A /* TitleView.m */; };
+		815BB9311EE630CA00755F1F /* WLPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BB9301EE630CA00755F1F /* WLPageView.m */; };
+		815BB9331EE6453F00755F1F /* nar_bgbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 815BB9321EE6453F00755F1F /* nar_bgbg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,9 @@
 		186609021EDF10DA00CDAE74 /* WMPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPageController.m; sourceTree = "<group>"; };
 		18FCD5731EE050D90093BC1A /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
 		18FCD5741EE050D90093BC1A /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
+		815BB92F1EE630CA00755F1F /* WLPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLPageView.h; sourceTree = "<group>"; };
+		815BB9301EE630CA00755F1F /* WLPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLPageView.m; sourceTree = "<group>"; };
+		815BB9321EE6453F00755F1F /* nar_bgbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nar_bgbg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,7 @@
 				186608DD1EDF06AD00CDAE74 /* ViewController.h */,
 				186608DE1EDF06AD00CDAE74 /* ViewController.m */,
 				186608E01EDF06AD00CDAE74 /* Main.storyboard */,
+				815BB9321EE6453F00755F1F /* nar_bgbg.png */,
 				186608E31EDF06AD00CDAE74 /* Assets.xcassets */,
 				186608E51EDF06AD00CDAE74 /* LaunchScreen.storyboard */,
 				186608E81EDF06AD00CDAE74 /* Info.plist */,
@@ -148,6 +154,8 @@
 			children = (
 				18FCD5731EE050D90093BC1A /* TitleView.h */,
 				18FCD5741EE050D90093BC1A /* TitleView.m */,
+				815BB92F1EE630CA00755F1F /* WLPageView.h */,
+				815BB9301EE630CA00755F1F /* WLPageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,7 +219,7 @@
 				TargetAttributes = {
 					186608D31EDF06AD00CDAE74 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 93W4YA78B9;
+						DevelopmentTeam = 34CC3Y6G4G;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -240,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				186608E71EDF06AD00CDAE74 /* LaunchScreen.storyboard in Resources */,
+				815BB9331EE6453F00755F1F /* nar_bgbg.png in Resources */,
 				186608E41EDF06AD00CDAE74 /* Assets.xcassets in Resources */,
 				186608E21EDF06AD00CDAE74 /* Main.storyboard in Resources */,
 			);
@@ -255,6 +264,7 @@
 				186608DF1EDF06AD00CDAE74 /* ViewController.m in Sources */,
 				186609081EDF10DA00CDAE74 /* WMPageController.m in Sources */,
 				186609051EDF10DA00CDAE74 /* WMMenuView.m in Sources */,
+				815BB9311EE630CA00755F1F /* WLPageView.m in Sources */,
 				186609041EDF10DA00CDAE74 /* WMMenuItem.m in Sources */,
 				186608DC1EDF06AD00CDAE74 /* AppDelegate.m in Sources */,
 				186608D91EDF06AD00CDAE74 /* main.m in Sources */,
@@ -381,8 +391,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 93W4YA78B9;
+				DEVELOPMENT_TEAM = 34CC3Y6G4G;
 				INFOPLIST_FILE = PageNavigation_Test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.WenLongJiang.PageNavigation-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -393,8 +404,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 93W4YA78B9;
+				DEVELOPMENT_TEAM = 34CC3Y6G4G;
 				INFOPLIST_FILE = PageNavigation_Test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.WenLongJiang.PageNavigation-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
